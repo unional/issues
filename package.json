@@ -27,7 +27,8 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "remove-spec": "rimraf dist/es5/**/*.spec.*",
     "test": "npm run clean && tsc && ava",
-    "watch": "npm run clean && node scripts/watch.js"
+    "watch": "npm run clean && node scripts/watch.js",
+    "postinstall": "cd plugins/npm-module && npm install"
   },
   "author": {
     "name": "Homa Wong",
@@ -43,9 +44,6 @@
   },
   "private": true,
   "license": "MIT",
-  "peerDependencies": {
-    "aurelia-logging": ">=1.2.0"
-  },
   "ava": {
     "files": [
       "dist/es5/**/*.spec.js"
@@ -68,6 +66,7 @@
     ]
   },
   "devDependencies": {
+    "@types/systemjs": "^0.20.0",
     "aurelia-logging-color": "^0.4.12",
     "ava": "^0.18.1",
     "core-js": "^2.4.1",
@@ -92,6 +91,7 @@
     "webpack": "^2.2.0"
   },
   "dependencies": {
-    "aurelia-logging": "^1.2.0"
+    "aurelia-logging": "^1.2.0",
+    "systemjs": "^0.20.5"
   }
 }
