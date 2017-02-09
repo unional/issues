@@ -1,14 +1,14 @@
 import test from 'ava'
 import * as SystemJS from 'systemjs'
-import jsdomify from 'jsdomify'
+// import jsdomify from 'jsdomify'
 
-test.before(() => {
-  jsdomify.create()
-})
+// test.before(() => {
+//   jsdomify.create()
+// })
 
-test.after(() => {
-  jsdomify.desctroy()
-})
+// test.after(() => {
+//   jsdomify.desctroy()
+// })
 
 test('npm-module', async _t => {
   console.log('isBrowser', typeof window !== 'undefined' && typeof document !== 'undefined')
