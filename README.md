@@ -8,6 +8,18 @@
 ![badge-size-es5-url]
 ![badge-size-es2015-url]
 
+A simple repo to demo various issues.
+
+## Usage
+
+```sh
+git clone https://github.com/unional/some-issues.git
+cd some-issues
+git checkout <issue-branch>
+npm install
+npm test
+```
+
 ## Contribute
 
 ```sh
