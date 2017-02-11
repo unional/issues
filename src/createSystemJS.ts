@@ -7,8 +7,7 @@ export function createSystemJS(pluginName: string) {
     map: {
       [pluginName]: pluginName,
       'color-map': pluginName + '/node_modules/color-map'
-      // '*': './npm-module/node_modules/*'
-      // [pluginName]: pluginName
+      // '*': pluginName + '/npm-module/node_modules/*'
     },
     packageConfigPaths: [
       '*/package.json',
