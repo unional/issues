@@ -5,7 +5,7 @@ import jsdomify from 'jsdomify'
 let createSystemJS
 test.before(() => {
   delete require.cache[require.resolve('systemjs')]
-  jsdomify.create('<!DOCTYPE html><html><base href="file:///Users/hwong/github/unional/some-issues/index.html"></html>')
+  jsdomify.create(`<!DOCTYPE html><html><base href="file://${process.cwd()}/index.html"></html>`)
   createSystemJS = require('./createSystemJS').createSystemJS
 })
 
