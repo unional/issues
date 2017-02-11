@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "main": "src/index.js",
   "dependencies": {
-    "aurelia-logging-color": "^0.4.13"
-  }
+    "aurelia-logging-color": "^0.4.13",
+    "color-map": "^0.5.7"
+  },
+  "devDependencies": {}
 }
