@@ -13,7 +13,7 @@ test.after(() => {
   jsdomify.destroy()
 })
 
-test.only(async _t => {
+test(async _t => {
   const sys = createSystemJS('npm-module')
   console.log(sys.getConfig())
   await sys.import('npm-module')
