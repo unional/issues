@@ -67,6 +67,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jsdom": "^2.0.29",
     "@types/node": "^7.0.5",
     "@types/systemjs": "^0.20.0",
     "aurelia-logging-color": "^0.4.12",
@@ -76,6 +77,7 @@
     "dependency-check": "^2.8.0",
     "eslint": "^3.15.0",
     "eslint-config-unional": "^0.2.3",
+    "jsdom": "^9.11.0",
     "jsdomify": "^3.1.0",
     "nyc": "^10.1.2",
     "param-case": "^2.1.0",
