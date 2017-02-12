@@ -71,7 +71,7 @@
     "@types/node": "^7.0.5",
     "@types/systemjs": "^0.20.0",
     "aurelia-logging-color": "^0.4.12",
-    "ava": "^0.17.0",
+    "ava": "^0.18.1",
     "browser-env": "^2.0.20",
     "core-js": "^2.4.1",
     "dependency-check": "^2.8.0",
