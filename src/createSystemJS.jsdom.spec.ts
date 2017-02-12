@@ -20,7 +20,7 @@ test.beforeEach(() => {
   document.body.appendChild(scriptEl)
 })
 
-test.only(async _t => {
+test(async _t => {
   const sys = window.createSystemJS('npm-module')
   // console.log(sys.getConfig())
   await sys.import('npm-module')
