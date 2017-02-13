@@ -3,16 +3,14 @@ import * as SystemJS from 'systemjs'
 export function createSystemJS(pluginName: string) {
   const sys = new SystemJS.constructor()
   sys.config({
-    baseURL: `plugins`,
+    baseURL: `plugins/${pluginName}/node_modules`,
     map: {
-      [pluginName]: pluginName,
-      'color-map': pluginName + '/node_modules/color-map'
-      // '*': pluginName + '/npm-module/node_modules/*'
+      [pluginName]: `./plugins/${pluginName}`
     },
     packageConfigPaths: [
+      './plugins/*/package.json',
       '*/package.json',
-      pluginName + '/node_modules/*/package.json',
-      pluginName + '/node_modules/@*/*/package.json'
+      '@*/*/package.json'
     ]
   })
 
