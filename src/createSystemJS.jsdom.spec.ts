@@ -9,6 +9,7 @@ const createSystemJSContent = readFileSync(require.resolve('./createSystemJS'), 
 let window
 test.beforeEach(() => {
   const document = jsdom(`<!DOCTYPE html><html><base href="file://${process.cwd()}/index.html"></html>`)
+  // const document = jsdom()
   window = document.defaultView
 
   let scriptEl = document.createElement('script')
