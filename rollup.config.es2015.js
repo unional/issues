@@ -14,10 +14,12 @@ export default {
   dest: `dist/${paramCase(pkg.name)}.es2015.js`,
   entry: 'dist/es2015/index.js',
   external: [
+    'systemjs'
   ],
   exports: 'named',
   format: 'iife',
   globals: {
+    'systemjs': 'SystemJS'
   },
   moduleId: pkg.name,
   moduleName,
@@ -36,6 +38,7 @@ export default {
     nodeResolve({
       jsnext: true,
       skip: [
+        'systemjs'
       ]
     }),
     nodeGlobals(),
