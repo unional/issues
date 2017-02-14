@@ -9,10 +9,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run clean && npm run build-es5 && npm run build-es2015",
+    "build": "npm run clean && npm run build-es5",
     "build-es2015": "tsc -p tsconfig.es2015.json",
     "build-es5": "tsc -p tsconfig.es5.json",
-    "bundle": "npm run bundle-es2015 && npm run bundle-es5",
+    "bundle": "npm run bundle-es5",
     "bundle-es2015": "rollup --config rollup.config.es2015.js",
     "bundle-es5": "webpack --config webpack.config.es5.js",
     "clean": "rimraf dist/es5 dist/es2015",
@@ -26,7 +26,7 @@
     "coverage": "nyc --check-coverage --branches 85 --functions 85 --lines 85 npm test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "remove-spec": "rimraf dist/es5/**/*.spec.*",
-    "test": "npm run clean && tsc && ava",
+    "test": "npm run clean && tsc && npm run bundle && ava",
     "watch": "npm run clean && node scripts/watch.js"
   },
   "author": {
@@ -68,6 +68,8 @@
     ]
   },
   "devDependencies": {
+    "@types/jsdom": "^2.0.30",
+    "@types/reflect-metadata": "0.0.5",
     "aurelia-logging-color": "^0.4.12",
     "ava": "^0.18.1",
     "core-js": "^2.4.1",
@@ -78,6 +80,7 @@
     "nyc": "^10.1.2",
     "param-case": "^2.1.0",
     "pascal-case": "^2.0.0",
+    "reflect-metadata": "^0.1.9",
     "rimraf": "^2.5.4",
     "rollup": "^0.41.4",
     "rollup-plugin-commonjs": "^7.0.0",
@@ -88,10 +91,11 @@
     "source-map-loader": "^0.1.6",
     "tslint": "^4.4.2",
     "tslint-config-unional": "^0.6.0",
-    "typescript": "^2.1.6",
+    "typescript": "^2.2.0-dev.20170214",
     "webpack": "^2.2.0"
   },
   "dependencies": {
-    "aurelia-logging": "^1.2.0"
+    "aurelia-logging": "^1.2.0",
+    "jsdom": "^9.11.0"
   }
 }
