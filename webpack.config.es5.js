@@ -14,6 +14,7 @@ module.exports = {
     [filename]: './dist/es5/index'
   },
   externals: {
+    'systemjs': 'SystemJS'
   },
   module: {
     rules: [
