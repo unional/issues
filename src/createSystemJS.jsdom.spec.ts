@@ -1,36 +1,38 @@
 import test from 'ava'
-import { resolve } from 'path'
 
 import { readFileSync } from 'fs'
 import { jsdom, createVirtualConsole } from 'jsdom'
 
 const systemJSContent = readFileSync(require.resolve('systemjs'), { encoding: 'utf-8' })
 
-const createSystemJSContent = readFileSync(resolve('dist/some-issues.es5.js'), { encoding: 'utf-8' })
+const cwd = process.cwd()
 
-let window
-test.beforeEach(() => {
+test('load script manually', async t => {
   const virtualConsole = createVirtualConsole().sendTo(console)
   const document = jsdom('',
     {
-      url: `file://${process.cwd()}/index.html`,
+      url: `file://${cwd}/index.html`,
       virtualConsole
     })
-
-  window = document.defaultView
+  const window = document.defaultView as any
 
   let scriptEl = document.createElement('script')
   scriptEl.textContent = systemJSContent
   document.body.appendChild(scriptEl)
-
-  scriptEl = document.createElement('script')
-  scriptEl.textContent = createSystemJSContent
-  document.body.appendChild(scriptEl)
+  t.not(window.SystemJS, undefined)
 })
 
-test(async t => {
-  const sys = window.SomeIssues.createSystemJS('npm-module')
-  const actual = await sys.import('npm-module')
-  console.log(actual)
-  t.is(typeof actual.rgbHex, 'function')
+test('use scripts property', async t => {
+  const virtualConsole = createVirtualConsole().sendTo(console)
+  const document = jsdom('',
+    {
+      url: `file://${cwd}/index.html`,
+      virtualConsole,
+      scripts: [
+        require.resolve('systemjs')
+      ]
+    })
+  const window = document.defaultView as any
+
+  t.not(window.SystemJS, undefined)
 })
