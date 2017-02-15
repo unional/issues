@@ -1,37 +1,52 @@
 import test from 'ava'
-import { resolve } from 'path'
-
-import { readFileSync } from 'fs'
-import { jsdom, createVirtualConsole } from 'jsdom'
-
-const systemJSContent = readFileSync(require.resolve('systemjs'), { encoding: 'utf-8' })
-
-const createSystemJSContent = readFileSync(resolve('dist/some-issues.es5.js'), { encoding: 'utf-8' })
+import { env, createVirtualConsole } from 'jsdom'
 
 let window
 test.beforeEach(() => {
-  const virtualConsole = createVirtualConsole().sendTo(console)
-  const document = jsdom('',
-    {
-      url: `file://${process.cwd()}/index.html`,
-      virtualConsole
+  return new Promise(r => {
+    const virtualConsole = createVirtualConsole().sendTo(console)
+    env({
+      file: 'index.html',
+      virtualConsole,
+      scripts: [
+        require.resolve('systemjs')
+      ],
+      done(err, win) {
+        if (err) {
+          throw err
+        }
+
+        window = win
+        r()
+      }
     })
-
-  window = document.defaultView
-
-  let scriptEl = document.createElement('script')
-  scriptEl.textContent = systemJSContent
-  document.body.appendChild(scriptEl)
-
-  scriptEl = document.createElement('script')
-  scriptEl.textContent = createSystemJSContent
-  document.body.appendChild(scriptEl)
+  })
 })
 
-test.only(async t => {
-  console.log(window.SomeIssues)
-  const sys = window.SomeIssues.createSystemJS('npm-module')
-  const actual = await sys.import('npm-module')
-  console.log(actual)
-  t.is(typeof actual.rgbHex, 'function')
+test('control', async t => {
+  let thrown
+  try {
+    // const actual = await sys.import('no-package')
+    await new Promise(() => {
+      throw new Error('asdfs')
+    })
+  }
+  catch (e) {
+    thrown = e
+  }
+
+  t.not(thrown, undefined)
+})
+
+test('uncaught', async t => {
+  let thrown
+  try {
+    await window.SystemJS.import('no-package')
+  }
+  catch (e) {
+    thrown = e
+  }
+
+  // not reach. Error escaped from the flow.
+  t.not(thrown, undefined)
 })
