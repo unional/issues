@@ -41,7 +41,7 @@ test('control', async t => {
 test('uncaught', async t => {
   let thrown
   try {
-    await window.SystemJS.import('no-package')
+    await window.SystemJS.import('plugins/no-package')
   }
   catch (e) {
     thrown = e
