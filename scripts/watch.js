@@ -5,12 +5,6 @@ const cp = require('child_process');
 let ava;
 cp.spawn('tsc', ['-w'], { shell: true })
   .stdout.on('data', (data) => {
-    if (!ava) {
-      ava = cp.spawn('ava', ['-w'], {
-        stdio: 'inherit',
-        shell: true
-      })
-    }
     const text = data.toString()
     process.stdout.write(text)
     if (/.*Compilation complete/.test(text)) {
@@ -18,5 +12,14 @@ cp.spawn('tsc', ['-w'], { shell: true })
         stdio: 'inherit',
         shell: true
       })
+      cp.spawnSync('npm', ['run', 'bundle'], {
+        shell: true
+      })
+      if (!ava) {
+        ava = cp.spawn('ava', ['-w'], {
+          stdio: 'inherit',
+          shell: true
+        })
+      }
     }
   })
