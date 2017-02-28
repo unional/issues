@@ -92,6 +92,8 @@
     "webpack": "^2.2.0"
   },
   "dependencies": {
-    "aurelia-logging": "^1.2.0"
+    "aurelia-logging": "^1.2.0",
+    "make-error": "^1.2.1",
+    "systemjs": "^0.20.9"
   }
 }
