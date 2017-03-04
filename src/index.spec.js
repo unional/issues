@@ -5,12 +5,10 @@ import { env, createVirtualConsole } from 'jsdom'
 import { foo } from './index'
 
 test('first test', t => {
-  const virtualConsole = createVirtualConsole().sendTo(console)
   return new Promise((resolve, reject) => {
     env({
       html: '<br>',
       url: fileUrl(process.cwd()) + '/',
-      virtualConsole,
       scripts: [
         require.resolve('systemjs')
       ],
