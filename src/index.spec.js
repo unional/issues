@@ -1,12 +1,12 @@
 import test from 'ava'
-import * as fileUrl from 'file-url'
+import fileUrl from 'file-url'
 import { env, createVirtualConsole } from 'jsdom'
 
 import { foo } from './index'
 
 test('first test', t => {
   const virtualConsole = createVirtualConsole().sendTo(console)
-  return new Promise<any>((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     env({
       html: '<br>',
       url: fileUrl(process.cwd()) + '/',
@@ -27,12 +27,12 @@ test('first test', t => {
     const sys = win.SystemJS
     sys.config({
       packages: {
-        'dist/es5': {
+        'src': {
           defaultExtension: 'js'
         }
       }
     })
-    const m = await sys.import('dist/es5/index')
+    const m = await sys.import('src/index')
     t.is(m.boo(), 'boo')
   })
 })
