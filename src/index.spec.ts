@@ -2,12 +2,9 @@ import test from 'ava'
 
 import { Container, autoinject } from 'aurelia-dependency-injection'
 
-
 @autoinject()
 class Depender {
-  constructor(private dep: Dependent) {
-    console.log(dep)
-  }
+  constructor(private dep: Dependent) { }
   get() {
     return this.dep.foo
   }
