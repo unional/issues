@@ -1,22 +1,23 @@
 import test from 'ava'
 
-import { Container, singleton } from 'aurelia-dependency-injection'
+import { Container, autoinject } from 'aurelia-dependency-injection'
 
-@singleton()
+
+@autoinject()
 class Depender {
-  constructor(private dep: Dependent) { }
+  constructor(private dep: Dependent) {
+    console.log(dep)
+  }
   get() {
     return this.dep.foo
   }
 }
-
 class Dependent {
   foo = 'foo'
 }
 
 test('first test', t => {
   const container = new Container()
-
   const actual = container.get(Depender)
 
   t.is(actual.get(), 'foo')
