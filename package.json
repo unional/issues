@@ -68,6 +68,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jsdom": "^2.0.30",
     "aurelia-logging-color": "^0.4.12",
     "ava": "^0.18.1",
     "core-js": "^2.4.1",
@@ -92,6 +93,8 @@
     "webpack": "^2.2.0"
   },
   "dependencies": {
-    "aurelia-logging": "^1.2.0"
+    "aurelia-logging": "^1.2.0",
+    "file-url": "^2.0.2",
+    "jsdom": "^9.12.0"
   }
 }
