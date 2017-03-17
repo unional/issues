@@ -16,6 +16,7 @@ test('first test', t => {
 
         const xml = new win.DOMParser().parseFromString('<script>x<\/script>', 'text/xml')
         const parseError = xml.getElementsByTagName('parsererror')
+        console.log(parseError)
         t.is(parseError.length, 0)
         resolve()
       }
