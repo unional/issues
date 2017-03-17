@@ -31,6 +31,6 @@ test('parseerror', t => {
 })
 
 test('wrong child type', t => {
-  const root = new win.DOMParser().parseFromString('<?xml version=\"1.0\"?>\n<a><\/a>\n', 'text/xml')
+  const root = new win.DOMParser().parseFromString('<?xml version=\"1.0\"?>\n<a><\/a>', 'text/xml')
   t.is(root.firstChild.nodeType, 1)
 })
