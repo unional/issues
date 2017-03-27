@@ -13,8 +13,8 @@
     "moduleResolution": "node",
     "newLine": "LF",
     "noImplicitAny": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "removeComments": false,
     "sourceMap": true,
     "strictNullChecks": true
