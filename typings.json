@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "nop": "registry:npm/nop#1.0.0+20160723033700"
+  }
+}
