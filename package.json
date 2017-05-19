@@ -92,6 +92,8 @@
     "webpack": "^2.2.0"
   },
   "dependencies": {
-    "aurelia-logging": "^1.2.0"
+    "aurelia-logging": "^1.2.0",
+    "axios": "^0.16.1",
+    "domture": "^0.7.2"
   }
 }

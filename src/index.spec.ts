@@ -1,5 +1,7 @@
 import test from 'ava'
+import { create } from 'domture'
 
-test('first test', t => {
-  t.pass('no test yet')
+test('cannot load axios', async _t => {
+  const domture = await create()
+  await domture.import('axios')
 })
