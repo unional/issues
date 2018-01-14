@@ -42,4 +42,4 @@ typings
 
 # project folders
 dist
-dist-spec
+dist-es5
