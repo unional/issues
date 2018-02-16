@@ -11,7 +11,7 @@
     "dc": "npm run dependency-check",
     "dependency-check": "dependency-check . --unused --no-dev && dependency-check . --missing --no-dev",
     "lint": "tslint \"src/**/*.ts\"",
-    "test": "npm run clean && tsc && ava",
+    "test": "ava",
     "watch": "npm run clean && node scripts/watch.js"
   },
   "author": {
@@ -29,12 +29,13 @@
   "private": true,
   "license": "MIT",
   "ava": {
+    "failWithoutAssertions": false,
     "files": [
-      "dist-es5/**/*.spec.js"
+      "src/**/*.spec.js"
     ],
     "source": [
       "scripts/*.js",
-      "dist-es5/**/*.js",
+      "src/**/*.js",
       "*.json"
     ]
   },
