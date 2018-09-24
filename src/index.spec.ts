@@ -1,5 +1,4 @@
-import test from 'ava'
 
-test('test demo', t => {
-  t.pass()
+test('test demo', () => {
+  expect(1).toBe(1)
 })

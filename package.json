@@ -1,41 +1,30 @@
 {
-  "name": "some-issues",
+  "name": "@unional/issues",
   "description": "",
   "version": "0.0.0",
-  "main": "dist-es5/index.js",
   "scripts": {
-    "build": "npm run clean && npm run build-es5 && npm run build-es2015",
-    "build-es2015": "tsc -p tsconfig.es2015.json",
-    "build-es5": "tsc -p tsconfig.es5.json",
-    "clean": "rimraf dist/es5 dist/es2015",
-    "dc": "npm run dependency-check",
-    "dependency-check": "dependency-check . --unused --no-dev && dependency-check . --missing --no-dev",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "npm run clean && tsc && ava",
-    "watch": "npm run clean && node scripts/watch.js"
+    "lint": "tslint 'src/**/*.ts'",
+    "test": "jest",
+    "watch": "jest --watch"
   },
   "author": {
     "name": "Homa Wong",
     "email": "homawong@gmail.com"
   },
-  "homepage": "https://github.com/unional/some-issues",
+  "homepage": "https://github.com/unional/issues",
   "bugs": {
-    "url": "https://github.com/unional/some-issues/issues"
+    "url": "https://github.com/unional/issues/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/unional/some-issues.git"
+    "url": "git://github.com/unional/issues.git"
   },
   "private": true,
   "license": "MIT",
-  "ava": {
-    "files": [
-      "dist-es5/**/*.spec.js"
-    ],
-    "source": [
-      "scripts/*.js",
-      "dist-es5/**/*.js",
-      "*.json"
+  "jest": {
+    "preset": "ts-jest",
+    "watchPlugins": [
+      ["jest-watch-suspend", { "suspend-on-start": true }]
     ]
   },
   "nyc": {
@@ -46,14 +35,16 @@
     ]
   },
   "devDependencies": {
-    "ava": "^0.24.0",
-    "dependency-check": "^2.10.0",
-    "eslint": "^4.15.0",
-    "eslint-config-unional": "^0.3.0",
-    "nyc": "^11.4.1",
+    "@types/jest": "^23.3.2",
+    "dependency-check": "^3.2.1",
+    "eslint": "^5.6.0",
+    "eslint-config-unional": "^0.3.6",
+    "jest": "^23.6.0",
+    "jest-watch-suspend": "^1.0.1",
     "rimraf": "^2.6.2",
-    "tslint": "^5.9.1",
-    "tslint-config-unional": "^0.9.0",
-    "typescript": "^2.6.2"
+    "ts-jest": "^23.10.1",
+    "tslint": "^5.11.0",
+    "tslint-config-unional": "^0.9.6",
+    "typescript": "^3.0.3"
   }
 }
