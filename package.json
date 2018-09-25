@@ -22,7 +22,19 @@
   "private": true,
   "license": "MIT",
   "jest": {
+    "globals": {
+      "ts-jest": {
+        "babelConfig": false,
+        "diagnostics": {
+          "warnOnly": true
+        }
+      }
+    },
     "preset": "ts-jest",
+    "reporters": [
+      "default",
+      "jest-audio-reporter"
+    ],
     "roots": [
       "<rootDir>/src"
     ],
@@ -51,19 +63,13 @@
       ]
     ]
   },
-  "nyc": {
-    "exclude": [
-      "scripts",
-      "**/*.spec.*",
-      "**/fixtures/**/*"
-    ]
-  },
   "devDependencies": {
     "@types/jest": "^23.3.2",
     "dependency-check": "^3.2.1",
     "eslint": "^5.6.0",
     "eslint-config-unional": "^0.3.6",
     "jest": "^23.6.0",
+    "jest-audio-reporter": "^2.0.1",
     "jest-watch-suspend": "^1.0.1",
     "jest-watch-toggle-config": "^1.0.2",
     "rimraf": "^2.6.2",
