@@ -22,39 +22,11 @@
   "private": true,
   "license": "MIT",
   "jest": {
-    "globals": {
-      "ts-jest": {
-        "babelConfig": false,
-        "diagnostics": {
-          "warnOnly": true
-        }
-      }
-    },
     "preset": "ts-jest",
-    "reporters": [
-      "default",
-      "jest-audio-reporter"
-    ],
     "roots": [
       "<rootDir>/src"
     ],
-    "testEnvironment": "node",
-    "testMatch": [
-      "<rootDir>/src/**/*.(accept|unit|spec).ts"
-    ],
     "watchPlugins": [
-      [
-        "jest-watch-toggle-config",
-        {
-          "setting": "verbose"
-        }
-      ],
-      [
-        "jest-watch-toggle-config",
-        {
-          "setting": "collectCoverage"
-        }
-      ],
       [
         "jest-watch-suspend",
         {
@@ -69,9 +41,7 @@
     "eslint": "^5.6.0",
     "eslint-config-unional": "^0.3.6",
     "jest": "^23.6.0",
-    "jest-audio-reporter": "^2.0.1",
     "jest-watch-suspend": "^1.0.1",
-    "jest-watch-toggle-config": "^1.0.2",
     "rimraf": "^2.6.2",
     "ts-jest": "^23.10.1",
     "tslint": "^5.11.0",
